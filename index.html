@@ -1,129 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Love For You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You ❤️</title>
 
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#000;
 overflow:hidden;
-background: radial-gradient(circle at center, #120012, #000);
-font-family: Arial, sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:sans-serif;
 }
 
-/* center */
-.center{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-text-align:center;
+#loading{
 color:white;
-z-index:10;
+font-size:28px;
+animation:blink 1s infinite;
 }
 
-button{
-padding:14px 28px;
-border:none;
-border-radius:30px;
-background:#ff4da6;
-color:white;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 0 18px #ff4da6;
+@keyframes blink{
+50%{opacity:.3;}
 }
 
-/* 💖 clean floating text (no fancy Unicode font) */
 .love{
 position:absolute;
-color:#ffb3d9;
-font-size:26px;
-font-weight:bold;
-text-shadow:0 0 12px #ff4da6;
-animation:floatUp 9s linear infinite;
-pointer-events:none;
-white-space:nowrap;
-opacity:0.9;
+font-size:30px;
+color:red;
+animation:fall linear infinite;
 }
 
-/* smooth float */
-@keyframes floatUp{
-0%{transform:translateY(110vh); opacity:0;}
-20%{opacity:1;}
-100%{transform:translateY(-120vh); opacity:0;}
+@keyframes fall{
+0%{
+transform:translateY(-100vh) scale(.5);
+opacity:0;
 }
-
-/* 💗 hearts */
-.heart{
-position:absolute;
-font-size:20px;
-animation:heartFloat 7s linear infinite;
-pointer-events:none;
+100%{
+transform:translateY(100vh) scale(1.5);
+opacity:1;
 }
-
-@keyframes heartFloat{
-0%{transform:translateY(100vh); opacity:0;}
-50%{opacity:1;}
-100%{transform:translateY(-120vh); opacity:0;}
-}
-
-/* bottom message (iPhone style emoji use) */
-#msg{
-position:fixed;
-bottom:20px;
-width:100%;
-text-align:center;
-color:#ffb3d9;
-font-size:18px;
-text-shadow:0 0 10px #ff4da6;
 }
 </style>
 </head>
 
 <body>
 
-<div class="center" id="home">
-<p>💖 Click Start</p>
-<button onclick="startLove()">Start</button>
-</div>
-
-<div id="msg">[ pakhi eta tmr jonno ] 🫣💖😭</div>
+<div id="loading">স্ক্যান করা হচ্ছে...</div>
 
 <script>
+setTimeout(()=>{
 
-let text = "I Love You Moriom 💖😭";
+document.getElementById("loading").style.display="none";
 
-function startLove(){
-
-document.getElementById("home").style.display="none";
-
-/* floating text */
-for(let i=0;i<25;i++){
+for(let i=0;i<40;i++){
 let d=document.createElement("div");
 d.className="love";
-d.innerHTML=text;
-
+d.innerHTML="❤️ I Love You Piku ❤️";
 d.style.left=Math.random()*100+"vw";
-d.style.animationDuration=(6+Math.random()*5)+"s";
-
+d.style.top=Math.random()*100+"vh";
+d.style.animationDuration=(5+Math.random()*5)+"s";
 document.body.appendChild(d);
 }
 
-/* hearts */
-for(let i=0;i<20;i++){
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💖";
-
-h.style.left=Math.random()*100+"vw";
-h.style.animationDuration=(5+Math.random()*5)+"s";
-
-document.body.appendChild(h);
-}
-
-}
-
+},3000);
 </script>
 
 </body>
