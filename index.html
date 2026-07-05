@@ -1,52 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>I Love You Piku ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I Love You</title>
+
 <style>
 body{
 margin:0;
-background:#000;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+background:black;
 overflow:hidden;
-font-family:Arial,sans-serif;
-color:#fff;
+font-family:sans-serif;
 }
-#loading{
-font-size:28px;
+
+h1{
+color:#ff2d55;
+font-size:45px;
+text-align:center;
+text-shadow:0 0 20px #ff2d55;
+animation:beat 1s infinite;
 }
-.love{
+
+@keyframes beat{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.2);}
+}
+
+.heart{
 position:absolute;
 color:red;
-font-size:28px;
-animation:fall 6s linear infinite;
+font-size:20px;
+animation:fall 5s linear infinite;
 }
+
 @keyframes fall{
-0%{transform:translateY(-100vh);}
-100%{transform:translateY(100vh);}
+0%{transform:translateY(-10%);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(110vh);opacity:0;}
+}
+
+#msg{
+position:absolute;
+bottom:50px;
+color:white;
+font-size:18px;
+text-align:center;
 }
 </style>
 </head>
+
 <body>
 
-<div id="loading">স্ক্যান করা হচ্ছে...</div>
+<h1>I Love You Piku ❤️</h1>
+<div id="msg">Forever Yours ❤️</div>
 
 <script>
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(2+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
 setTimeout(()=>{
-document.getElementById("loading").style.display="none";
-for(let i=0;i<40;i++){
-let d=document.createElement("div");
-d.className="love";
-d.innerHTML="❤️ I Love You Piku ❤️";
-d.style.left=Math.random()*100+"vw";
-d.style.animationDelay=Math.random()*5+"s";
-document.body.appendChild(d);
+heart.remove();
+},5000);
 }
-},3000);
+
+setInterval(createHeart,200);
 </script>
 
 </body>
